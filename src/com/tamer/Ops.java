@@ -31,16 +31,17 @@ public class Ops {
         StdIO.writeLine("");
         StdIO.writeLine("-- ATM List --");
         StdIO.writeLine("");
-        StdIO.writeLine("ATM ID" + "     ATM LOCATION");
+        StdIO.writeLine(ConsoleColors.BLUE_BOLD+"ATM ID" + "     ATM LOCATION");
+        StdIO.writeLine("----------------------------------"+ConsoleColors.RESET);
         atmlist.forEach((k, v) -> System.out.println(k + "   " + v.getLocation()));
         StdIO.writeLine("");
-        StdIO.writeLine("Chose ATM Id you want to widhraw from");
+        StdIO.writeLine(ConsoleColors.BLACK_BOLD+"Chose ATM Id you want to widhraw from"+ConsoleColors.RESET);
         try {
             int atmno = Integer.parseInt(StdIO.realLine());
             if (atmlist.containsKey(atmno))
                 login(atmno);
             else {
-                StdIO.writeLine("Wrong ATM ID ... Please re-enter");
+                StdIO.writeLine(ConsoleColors.RED_BOLD_BRIGHT+"Wrong ATM ID ... Please re-enter"+ConsoleColors.RESET);
                 AtmUsing();
             }
         }catch (NumberFormatException e){
@@ -59,19 +60,21 @@ public class Ops {
 
 
             StdIO.writeLine("");
-            StdIO.writeLine("-- Logon --");
+            StdIO.writeLine(ConsoleColors.PURPLE_BACKGROUND_BRIGHT+"-- Login --"+ConsoleColors.RESET);
             StdIO.writeLine("");
-            StdIO.writeLine("** Welocme to My Bank **");
-            StdIO.writeLine("Insert your card -- Enter your card number --");
+            StdIO.writeLine(ConsoleColors.CYAN_BOLD+"** Welocme to My Bank **"+ConsoleColors.RESET);
+            StdIO.writeLine(ConsoleColors.BLACK_BOLD+"Insert your card -- Enter your card number --");
             String cardId = StdIO.realLine();
-            StdIO.write("Password : ");
+            StdIO.write("Password : "+ConsoleColors.RESET);
             String password = StdIO.realLine();
             loginCount++;
             boolean ok = checkLogin(cardId, password);
-            if (ok)
+            if (ok) {
+                StdIO.writeLine(ConsoleColors.PURPLE_BOLD+"Welcom "+customers.get(cardId).getName()+ConsoleColors.RESET);
                 widhraw(cardId, atmno);
+                }
             else {
-                StdIO.writeLine("Wrong Info ... please re-enter");
+                StdIO.writeLine(ConsoleColors.RED_BOLD_BRIGHT+"Wrong Info ... please re-enter"+ConsoleColors.RESET);
                 continue;
             }
 
@@ -83,16 +86,18 @@ public class Ops {
         int amount = 0;
         Customer c = customers.get(cardId);
         AtmUnit a = atmlist.get(atmno);
-        System.out.println("User Info " + c.toString());
-        System.out.println("ATM Info" + a.toString());
+        // System.out.println("User Info " + c.toString());
+        // System.out.println("ATM Info" + a.toString());
 
         StdIO.writeLine("");
-        StdIO.writeLine("Please choose the amonut : ");
+        StdIO.writeLine(ConsoleColors.BLACK_BOLD+"Please choose the amonut : "+ConsoleColors.RESET);
         amount = widhrawRules();
 
         if (amount < c.getC_Balance()) {
             if (amount < a.getAtmBalnce()) {
-                StdIO.writeLine("Please collect your card and money");
+                StdIO.writeLine("");
+                StdIO.writeLine(ConsoleColors.BLACK_BOLD_BRIGHT+"Withdrawing in progress .... "+ConsoleColors.RESET);
+                StdIO.writeLine(ConsoleColors.BLACK_BOLD+"Please collect your card and money"+ConsoleColors.RESET);
                 c.setC_Balance(c.getC_Balance()-amount);
                 a.setAtmBalnce(a.getAtmBalnce()-amount);
                 String ran = String.valueOf(random.nextInt(1999999-1000000)+1000000);
@@ -107,27 +112,28 @@ public class Ops {
                 }
                 }
             else {
-                StdIO.writeLine("Sorry ... not enough cash at the moment in the ATM");
+                StdIO.writeLine(ConsoleColors.RED_BOLD_BRIGHT+"Sorry ... not enough cash at the moment in the ATM"+ConsoleColors.RESET);
                 StdIO.writeLine("You can widhraw up to " + atmlist.get(atmno).getAtmBalnce());
             }
         } else {
-            StdIO.writeLine("Sorry .... no sufficient fund in your account");
+            StdIO.writeLine(ConsoleColors.RED_BOLD_BRIGHT+"Sorry .... no sufficient fund in your account"+ConsoleColors.RESET);
             StdIO.writeLine("You have " +customers.get(cardId).getC_Balance()+" Sek remains in your account" );
             System.exit(0);
         }
-        System.out.println("User Info " + customers.get(cardId).toString());
-        System.out.println("ATM Info" + atmlist.get(atmno).toString());
-        System.out.println(" -- Transaction info --");
-        transList.forEach((k,v)-> System.out.println(v));
+//        System.out.println("User Info " + customers.get(cardId).toString());
+//        System.out.println("ATM Info" + atmlist.get(atmno).toString());
+//        System.out.println(" -- Transaction info --");
+//        transList.forEach((k,v)-> System.out.println(v));
        // System.exit(0);
         AtmUsing();
     }
 
     private int widhrawRules() throws IOException {
         int amount=0;
-        StdIO.writeLine("1) 100 \t\t 4)500");
+        StdIO.writeLine(ConsoleColors.GREEN_BOLD+"1) 100 \t\t 4)500");
         StdIO.writeLine("2) 200 \t\t 5)1000");
         StdIO.writeLine("3) 300 \t\t 6)another amount");
+        StdIO.write(">> "+ConsoleColors.RESET);
         String opt = StdIO.realLine();
         switch (opt){
             case "1":return 100;
@@ -136,18 +142,18 @@ public class Ops {
             case "4":return 500;
             case "5":return 1000;
             case "6":
-                StdIO.write("Enter the amount you want : ");
+                StdIO.write(ConsoleColors.BLACK_BOLD+"Enter the amount you want : "+ConsoleColors.RESET);
                 amount = Integer.parseInt(StdIO.realLine());
 
                 if (amount%100==0 && amount<=2000){
 
                 return amount;}
                 else{
-                    StdIO.writeLine("Please enter amount of hundreds only up to 2000 Sek");
+                    StdIO.writeLine(ConsoleColors.RED_BOLD_BRIGHT+"Please enter amount of hundreds only up to 2000 Sek"+ConsoleColors.RESET);
                     amount=widhrawRules();
                 }
                 default:
-                    StdIO.writeLine("Wrong option number please try again");
+                    StdIO.writeLine(ConsoleColors.RED_BOLD_BRIGHT+"Wrong option number please try again"+ConsoleColors.RESET);
                     amount=widhrawRules();
 
         }
