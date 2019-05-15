@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="86916ad4-2ee8-406e-afd8-2923bac028fc" name="Default Changelist" comment="" />
+    <list default="true" id="86916ad4-2ee8-406e-afd8-2923bac028fc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tamer/Ops.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tamer/Ops.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tamer/Trans.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tamer/Trans.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/tamer/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+            <state relative-caret-position="117">
+              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -27,7 +32,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/tamer/AtmUnit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
+            <state relative-caret-position="439">
               <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
               <folding>
                 <element signature="e#372#373#0" expanded="true" />
@@ -51,7 +56,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/tamer/Customer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
@@ -86,11 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/tamer/Ops.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="95" column="107" selection-start-line="95" selection-start-column="107" selection-end-line="95" selection-end-column="107" />
+            <state relative-caret-position="260">
+              <caret line="97" column="74" lean-forward="true" selection-start-line="97" selection-start-column="15" selection-end-line="97" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/tamer/Trans.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+            <state relative-caret-position="430">
+              <caret line="77" column="20" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="20" />
               <folding>
                 <element signature="e#493#494#0" expanded="true" />
                 <element signature="e#523#524#0" expanded="true" />
@@ -158,6 +163,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -172,12 +180,13 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="145" />
     <option name="y" value="47" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -210,6 +219,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../SchoolAdmin" />
@@ -253,15 +263,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557818983369</updated>
-      <workItem from="1557818986888" duration="17977000" />
+      <workItem from="1557818986888" duration="21786000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17977000" />
+    <option name="totallyTimeSpent" value="21786000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
@@ -279,7 +289,7 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1928494" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.276273" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -299,16 +309,23 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/tamer/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tamer/StdIO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        <state relative-caret-position="374">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#396#397#0" expanded="true" />
+            <element signature="e#431#432#0" expanded="true" />
+            <element signature="e#476#477#0" expanded="true" />
+            <element signature="e#513#514#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tamer/AtmUnit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
+        <state relative-caret-position="439">
           <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
           <folding>
             <element signature="e#372#373#0" expanded="true" />
@@ -331,59 +348,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tamer/StdIO.java">
+    <entry file="file://$PROJECT_DIR$/src/com/tamer/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#396#397#0" expanded="true" />
-            <element signature="e#431#432#0" expanded="true" />
-            <element signature="e#476#477#0" expanded="true" />
-            <element signature="e#513#514#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="117">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tamer/Trans.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+        <state relative-caret-position="97">
+          <caret line="2993" column="44" selection-start-line="2993" selection-start-column="44" selection-end-line="2993" selection-end-column="44" />
           <folding>
-            <element signature="e#493#494#0" expanded="true" />
-            <element signature="e#523#524#0" expanded="true" />
-            <element signature="e#566#567#0" expanded="true" />
-            <element signature="e#604#605#0" expanded="true" />
-            <element signature="e#642#643#0" expanded="true" />
-            <element signature="e#676#677#0" expanded="true" />
-            <element signature="e#730#731#0" expanded="true" />
-            <element signature="e#771#772#0" expanded="true" />
-            <element signature="e#889#890#0" expanded="true" />
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#978#979#0" expanded="true" />
-            <element signature="e#1020#1021#0" expanded="true" />
-            <element signature="e#809#810#0" expanded="true" />
-            <element signature="e#843#844#0" expanded="true" />
-            <element signature="e#897#898#0" expanded="true" />
-            <element signature="e#943#944#0" expanded="true" />
-            <element signature="e#976#977#0" expanded="true" />
-            <element signature="e#1005#1006#0" expanded="true" />
-            <element signature="e#1049#1050#0" expanded="true" />
-            <element signature="e#1085#1086#0" expanded="true" />
-            <element signature="e#1119#1120#0" expanded="true" />
-            <element signature="e#1149#1150#0" expanded="true" />
-            <element signature="e#1195#1196#0" expanded="true" />
-            <element signature="e#1233#1234#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tamer/Ops.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="95" column="107" selection-start-line="95" selection-start-column="107" selection-end-line="95" selection-end-column="107" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#117893#117894#0" expanded="true" />
+            <element signature="e#117955#117956#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -417,6 +395,49 @@
             <element signature="e#1308#1309#0" expanded="true" />
             <element signature="e#1358#1359#0" expanded="true" />
             <element signature="e#1395#1396#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tamer/Trans.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="77" column="20" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="20" />
+          <folding>
+            <element signature="e#493#494#0" expanded="true" />
+            <element signature="e#523#524#0" expanded="true" />
+            <element signature="e#566#567#0" expanded="true" />
+            <element signature="e#604#605#0" expanded="true" />
+            <element signature="e#642#643#0" expanded="true" />
+            <element signature="e#676#677#0" expanded="true" />
+            <element signature="e#730#731#0" expanded="true" />
+            <element signature="e#771#772#0" expanded="true" />
+            <element signature="e#889#890#0" expanded="true" />
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="e#978#979#0" expanded="true" />
+            <element signature="e#1020#1021#0" expanded="true" />
+            <element signature="e#809#810#0" expanded="true" />
+            <element signature="e#843#844#0" expanded="true" />
+            <element signature="e#897#898#0" expanded="true" />
+            <element signature="e#943#944#0" expanded="true" />
+            <element signature="e#976#977#0" expanded="true" />
+            <element signature="e#1005#1006#0" expanded="true" />
+            <element signature="e#1049#1050#0" expanded="true" />
+            <element signature="e#1085#1086#0" expanded="true" />
+            <element signature="e#1119#1120#0" expanded="true" />
+            <element signature="e#1149#1150#0" expanded="true" />
+            <element signature="e#1195#1196#0" expanded="true" />
+            <element signature="e#1233#1234#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tamer/Ops.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="97" column="74" lean-forward="true" selection-start-line="97" selection-start-column="15" selection-end-line="97" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

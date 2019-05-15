@@ -1,11 +1,18 @@
 package com.tamer;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 public class Ops {
     private HashMap<Integer, AtmUnit> atmlist = new HashMap<>();
     private HashMap<String, Customer> customers = new HashMap<>();
+    private HashMap<String, List<Trans>> transList= new HashMap<>();
+    Random random = new Random();
+
 
 
     public Ops() throws IOException {
@@ -74,18 +81,30 @@ public class Ops {
 
     private void widhraw(String cardId, int atmno) throws IOException {
         int amount = 0;
-        System.out.println("User Info " + customers.get(cardId).toString());
-        System.out.println("ATM Info" + atmlist.get(atmno).toString());
+        Customer c = customers.get(cardId);
+        AtmUnit a = atmlist.get(atmno);
+        System.out.println("User Info " + c.toString());
+        System.out.println("ATM Info" + a.toString());
 
         StdIO.writeLine("");
         StdIO.writeLine("Please choose the amonut : ");
         amount = widhrawRules();
 
-        if (amount < customers.get(cardId).getC_Balance()) {
-            if (amount < atmlist.get(atmno).getAtmBalnce()) {
+        if (amount < c.getC_Balance()) {
+            if (amount < a.getAtmBalnce()) {
                 StdIO.writeLine("Please collect your card and money");
-                customers.get(cardId).setC_Balance(customers.get(cardId).getC_Balance()-amount);
-                atmlist.get(atmno).setAtmBalnce(atmlist.get(atmno).getAtmBalnce()-amount);
+                c.setC_Balance(c.getC_Balance()-amount);
+                a.setAtmBalnce(a.getAtmBalnce()-amount);
+                String ran = String.valueOf(random.nextInt(1999999-1000000)+1000000);
+                Trans trans = new Trans(ran,c.getCustomer_Id(), LocalDateTime.now(),a.getLocation(),amount,c.getC_Balance());
+                if(transList.containsKey(c.getCustomer_Id())){
+                    transList.get(c.getCustomer_Id()).add(trans);
+                }
+                else{
+                    List<Trans> t = new ArrayList<>();
+                    t.add(trans);
+                    transList.put(c.getCustomer_Id(),t);
+                }
                 }
             else {
                 StdIO.writeLine("Sorry ... not enough cash at the moment in the ATM");
@@ -98,6 +117,8 @@ public class Ops {
         }
         System.out.println("User Info " + customers.get(cardId).toString());
         System.out.println("ATM Info" + atmlist.get(atmno).toString());
+        System.out.println(" -- Transaction info --");
+        transList.forEach((k,v)-> System.out.println(v));
        // System.exit(0);
         AtmUsing();
     }
