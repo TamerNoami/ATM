@@ -1,5 +1,7 @@
 package com.tamer;
 
+import com.sun.xml.internal.ws.util.StringUtils;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -37,9 +39,9 @@ public class Ops {
         StdIO.writeLine("");
         StdIO.writeLine(ConsoleColors.BLACK_BOLD+"Chose ATM Id you want to widhraw from"+ConsoleColors.RESET);
         try {
-            int atmno = Integer.parseInt(StdIO.realLine());
-            if (atmlist.containsKey(atmno))
-                login(atmno);
+            int atmNo = Integer.parseInt(StdIO.realLine());
+            if (atmlist.containsKey(atmNo))
+                login(atmNo);
             else {
                 StdIO.writeLine(ConsoleColors.RED_BOLD_BRIGHT+"Wrong ATM ID ... Please re-enter"+ConsoleColors.RESET);
                 AtmUsing();
@@ -67,14 +69,14 @@ public class Ops {
             StdIO.writeLine("");
             StdIO.writeLine(ConsoleColors.CYAN_BOLD+"** Welocme to My Bank **"+ConsoleColors.RESET);
             StdIO.writeLine(ConsoleColors.BLACK_BOLD+"Insert your card -- Enter your card number --");
-            String cardId = StdIO.realLine();
+            String customerId = StdIO.realLine();
             StdIO.write("Password : "+ConsoleColors.RESET);
             String password = StdIO.realLine();
             loginCount++;
-            boolean ok = checkLogin(cardId, password);
+            boolean ok = checkLogin(customerId, password);
             if (ok) {
-                StdIO.writeLine(ConsoleColors.PURPLE_BOLD+"Welcom "+customers.get(cardId).getName()+ConsoleColors.RESET);
-                optionScreen(cardId, atmno);//widhraw(cardId, atmno);
+                StdIO.writeLine(ConsoleColors.PURPLE_BOLD+"Welcom "+customers.get(customerId).getName()+ConsoleColors.RESET);
+                optionScreen(customerId, atmno);//widhraw(cardId, atmno);
                 }
             else {
                 StdIO.writeLine(ConsoleColors.RED_BOLD_BRIGHT+"Wrong Info ... please re-enter"+ConsoleColors.RESET);
@@ -85,7 +87,7 @@ public class Ops {
 
     }
 
-    private void optionScreen(String cardId, int atmno) throws IOException {
+    private void optionScreen(String customerId, int atmNo) throws IOException {
         StdIO.writeLine("");
         StdIO.writeLine("Options");
         StdIO.writeLine("1) Withdraw");
@@ -97,14 +99,51 @@ public class Ops {
         StdIO.write(">> ");
         String menuOption = StdIO.realLine();
         switch (menuOption){
-            case "1":widhraw(cardId, atmno);optionScreen(cardId,atmno);break;
-            case "2":Deposit(cardId, atmno);optionScreen(cardId,atmno);break;
-            case "3":StdIO.writeLine("You have "+ customers.get(cardId).getC_Balance()+ " SEK remains in your account");optionScreen(cardId,atmno);break;
-            case "4":transPrint(cardId);optionScreen(cardId,atmno);break;
-           // case "5":changePass(cardId);optionScreen(cardId,atmno);break;
+            case "1":widhraw(customerId, atmNo);optionScreen(customerId,atmNo);break;
+            case "2":Deposit(customerId, atmNo);optionScreen(customerId,atmNo);break;
+            case "3":StdIO.writeLine("You have "+ customers.get(customerId).getC_Balance()+ " SEK remains in your account");optionScreen(customerId,atmNo);break;
+            case "4":transPrint(customerId);optionScreen(customerId,atmNo);break;
+            case "5":changePass(customerId);optionScreen(customerId,atmNo);break;
             case "0":{StdIO.writeLine("Thanks for using our Bank ATM");System.exit(0);}
-            default: StdIO.writeLine("Wrong Option number");optionScreen(cardId,atmno);break;
+            default: StdIO.writeLine("Wrong Option number");optionScreen(customerId,atmNo);break;
         }
+    }
+
+    private void changePass(String customerId) throws IOException {
+        StdIO.writeLine("Please enter your old password ");
+        StdIO.write(">> ");
+        String oldPass =StdIO.realLine();
+        if(checkLogin(customerId,oldPass)){
+            String newPass=checkPass();
+            customers.get(customerId).setPassword(newPass);
+            StdIO.writeLine("Password changed successfully");
+              }
+    }
+
+    private String checkPass() throws IOException {
+        StdIO.writeLine("Enter your new password .. 4 numbers only");
+        StdIO.write(">> ");
+        String newPass1=StdIO.realLine();
+        StdIO.writeLine("Repeat you new password");
+        String newPass2=StdIO.realLine();
+
+        if(newPass1.length()!=4 || newPass2.length()!=4 ){
+                StdIO.writeLine("Only four digits are allowed");
+                checkPass() ;}
+        try{
+        int temp = Integer.parseInt(newPass1);
+        }catch (NumberFormatException e){
+                StdIO.writeLine("Only numbers are allowed  ");
+                checkPass() ;
+        }
+
+        if(!newPass1.equals(newPass2)) {
+            StdIO.writeLine("Wrong password");
+            checkPass() ;
+        }
+        else
+            return newPass1;
+        return newPass1;
     }
 
     private void transPrint(String cardId) {
@@ -146,10 +185,10 @@ public class Ops {
         }
     }
 
-    private void widhraw(String cardId, int atmno) throws IOException {
+    private void widhraw(String cardId, int atmNo) throws IOException {
         int amount = 0;
         Customer c = customers.get(cardId);
-        AtmUnit a = atmlist.get(atmno);
+        AtmUnit a = atmlist.get(atmNo);
         // System.out.println("User Info " + c.toString());
         // System.out.println("ATM Info" + a.toString());
 
@@ -165,11 +204,11 @@ public class Ops {
                 c.setC_Balance(c.getC_Balance()-amount);
                 a.setAtmBalnce(a.getAtmBalnce()-amount);
                 writeTrans(amount, c, a);
-                optionScreen(cardId,atmno);
+                optionScreen(cardId,atmNo);
             }
             else {
                 StdIO.writeLine(ConsoleColors.RED_BOLD_BRIGHT+"Sorry ... not enough cash at the moment in the ATM"+ConsoleColors.RESET);
-                StdIO.writeLine("You can widhraw up to " + atmlist.get(atmno).getAtmBalnce());
+                StdIO.writeLine("You can widhraw up to " + atmlist.get(atmNo).getAtmBalnce());
             }
         } else {
             StdIO.writeLine(ConsoleColors.RED_BOLD_BRIGHT+"Sorry .... no sufficient fund in your account"+ConsoleColors.RESET);
@@ -206,7 +245,7 @@ public class Ops {
                 return amount;}
                 else{
                     StdIO.writeLine(ConsoleColors.RED_BOLD_BRIGHT+"Please enter amount of hundreds only up to 2000 Sek"+ConsoleColors.RESET);
-                    amount=ATMRules();
+                    return ATMRules();
                 }
                 default:
                     StdIO.writeLine(ConsoleColors.RED_BOLD_BRIGHT+"Wrong option number please try again"+ConsoleColors.RESET);
