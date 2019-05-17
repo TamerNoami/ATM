@@ -18,8 +18,8 @@ public class Ops {
 
 
     public Ops() throws IOException {
-        AtmUnit atmUnit1 = new AtmUnit(10001, "Port 73, Handen, Haninge", 150000, true);
-        AtmUnit atmUnit2 = new AtmUnit(10002, "Haninge Centrum, Main Entrance", 150000, true);
+        AtmUnit atmUnit1 = new AtmUnit(10001, "Port 73, Handen, Haninge", 50000, true);
+        AtmUnit atmUnit2 = new AtmUnit(10002, "Haninge Centrum, Main Entrance", 50000, true);
         Customer Ahmed = new Customer("2233445566", "Ahmed Ali Ahmed", "1234", "123456789", true, 18123.23);
         Customer David = new Customer("2233445577", "David Alex Andersson", "4321", "987654321", true, 4512.12);
         atmlist.put(atmUnit1.getAtmId(), atmUnit1);
@@ -101,7 +101,7 @@ public class Ops {
         switch (menuOption){
             case "1":widhraw(customerId, atmNo);optionScreen(customerId,atmNo);break;
             case "2":Deposit(customerId, atmNo);optionScreen(customerId,atmNo);break;
-            case "3":StdIO.writeLine("You have "+ customers.get(customerId).getC_Balance()+ " SEK remains in your account");optionScreen(customerId,atmNo);break;
+            case "3":StdIO.writeLine("You have "+ConsoleColors.GREEN_BACKGROUND_BRIGHT +customers.get(customerId).getC_Balance()+ConsoleColors.RESET +" SEK remains in your account");optionScreen(customerId,atmNo);break;
             case "4":transPrint(customerId);optionScreen(customerId,atmNo);break;
             case "5":changePass(customerId);optionScreen(customerId,atmNo);break;
             case "0":{StdIO.writeLine("Thanks for using our Bank ATM");System.exit(0);}
@@ -113,11 +113,15 @@ public class Ops {
         StdIO.writeLine("Please enter your old password ");
         StdIO.write(">> ");
         String oldPass =StdIO.realLine();
-        if(checkLogin(customerId,oldPass)){
-            String newPass=checkPass();
+        if(!checkLogin(customerId,oldPass)) {
+            StdIO.writeLine("Wrong password ");
+            changePass(customerId);
+        }
+        else {
+            String newPass = checkPass();
             customers.get(customerId).setPassword(newPass);
             StdIO.writeLine("Password changed successfully");
-              }
+        }
     }
 
     private String checkPass() throws IOException {
@@ -129,21 +133,21 @@ public class Ops {
 
         if(newPass1.length()!=4 || newPass2.length()!=4 ){
                 StdIO.writeLine("Only four digits are allowed");
-                checkPass() ;}
+               return checkPass() ;}
         try{
         int temp = Integer.parseInt(newPass1);
         }catch (NumberFormatException e){
                 StdIO.writeLine("Only numbers are allowed  ");
-                checkPass() ;
+                return checkPass() ;
         }
 
         if(!newPass1.equals(newPass2)) {
-            StdIO.writeLine("Wrong password");
-            checkPass() ;
+            StdIO.writeLine("Mismatch password ... please re-enter");
+            return checkPass() ;
         }
         else
             return newPass1;
-        return newPass1;
+
     }
 
     private void transPrint(String cardId) {
@@ -157,7 +161,6 @@ public class Ops {
         for (Trans t:trans){
             StdIO.writeLine(t.getTransNo()+"\t"+t.getTransTime().toString().substring(0,10) + "\t" + t.getTransTime().toString().substring(11,19) + "\t  " + t.getAmount() + "\t" + t.getBalance() + "\t" + t.getAtmLocation());
         }
-        StdIO.writeLine("");
         StdIO.write("---------------------------------------------------------------------");
     }
 
@@ -168,6 +171,7 @@ public class Ops {
         Customer customer =  customers.get(cardId);
         AtmUnit atm = atmlist.get(atmno);
         customer.setC_Balance(customer.getC_Balance()+depAmount);
+        atm.setAtmBalnce(atm.getAtmBalnce()+depAmount);
         writeTrans(depAmount, customer, atm);
         StdIO.writeLine("Thanks for depositing ");
     }
@@ -175,6 +179,7 @@ public class Ops {
     private void writeTrans(int depAmount, Customer customer, AtmUnit atm) {
         String ran = String.valueOf(random.nextInt(1999999-1000000)+1000000);
         Trans trans = new Trans(ran,customer.getCustomer_Id(), LocalDateTime.now(),atm.getLocation(),depAmount,customer.getC_Balance());
+        atmlist.replace(atm.getAtmId(),atm);
         if(transList.containsKey(customer.getCustomer_Id())){
             transList.get(customer.getCustomer_Id()).add(trans);
         }
@@ -183,6 +188,8 @@ public class Ops {
             t.add(trans);
             transList.put(customer.getCustomer_Id(),t);
         }
+        System.out.println(atm.toString());
+        System.out.println(trans.toString());
     }
 
     private void widhraw(String cardId, int atmNo) throws IOException {
