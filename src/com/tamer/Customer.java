@@ -1,6 +1,6 @@
 package com.tamer;
 
-public class Customer {
+public class Customer implements java.io.Serializable{
 
     private String Customer_Id;
     private String name;

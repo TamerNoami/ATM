@@ -1,6 +1,6 @@
 package com.tamer;
 
-public class AtmUnit {
+public class AtmUnit implements java.io.Serializable {
     private int atmId;
     private String location;
     private int atmBalnce;

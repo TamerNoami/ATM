@@ -18,14 +18,17 @@ public class Ops {
 
 
     public Ops() throws IOException {
-        AtmUnit atmUnit1 = new AtmUnit(10001, "Port 73, Handen, Haninge", 50000, true);
-        AtmUnit atmUnit2 = new AtmUnit(10002, "Haninge Centrum, Main Entrance", 50000, true);
-        Customer Ahmed = new Customer("2233445566", "Ahmed Ali Ahmed", "1234", "123456789", true, 18123.23);
-        Customer David = new Customer("2233445577", "David Alex Andersson", "4321", "987654321", true, 4512.12);
-        atmlist.put(atmUnit1.getAtmId(), atmUnit1);
-        atmlist.put(atmUnit2.getAtmId(), atmUnit2);
-        customers.put(Ahmed.getCustomer_Id(), Ahmed);
-        customers.put(David.getCustomer_Id(), David);
+//        AtmUnit atmUnit1 = new AtmUnit(10001, "Port 73, Handen, Haninge", 100000, true);
+//        AtmUnit atmUnit2 = new AtmUnit(10002, "Haninge Centrum, Main Entrance", 100000, true);
+//        Customer Ahmed = new Customer("2233445566", "Ahmed Ali Ahmed", "1234", "123456789", true, 18123.23);
+//        Customer David = new Customer("2233445577", "David Alex Andersson", "4321", "987654321", true, 4512.12);
+//        atmlist.put(atmUnit1.getAtmId(), atmUnit1);
+//        atmlist.put(atmUnit2.getAtmId(), atmUnit2);
+//        customers.put(Ahmed.getCustomer_Id(), Ahmed);
+//        customers.put(David.getCustomer_Id(), David);
+        atmlist = FileIO.readObject("ATMlist.ser");
+        customers = FileIO.readObject("Customerlist.ser");
+        transList = FileIO.readObject("Translist.ser");
         AtmUsing();
     }
 
@@ -104,7 +107,11 @@ public class Ops {
             case "3":StdIO.writeLine("You have "+ConsoleColors.GREEN_BACKGROUND_BRIGHT +customers.get(customerId).getC_Balance()+ConsoleColors.RESET +" SEK remains in your account");optionScreen(customerId,atmNo);break;
             case "4":transPrint(customerId);optionScreen(customerId,atmNo);break;
             case "5":changePass(customerId);optionScreen(customerId,atmNo);break;
-            case "0":{StdIO.writeLine("Thanks for using our Bank ATM");System.exit(0);}
+            case "0":{StdIO.writeLine("Thanks for using our Bank ATM");
+                FileIO.writeFile(atmlist,"ATMlist.ser");
+                FileIO.writeFile(customers,"Customerlist.ser");
+                FileIO.writeFile(transList,"Translist.ser");
+            System.exit(0);}
             default: StdIO.writeLine("Wrong Option number");optionScreen(customerId,atmNo);break;
         }
     }
@@ -216,6 +223,7 @@ public class Ops {
             else {
                 StdIO.writeLine(ConsoleColors.RED_BOLD_BRIGHT+"Sorry ... not enough cash at the moment in the ATM"+ConsoleColors.RESET);
                 StdIO.writeLine("You can widhraw up to " + atmlist.get(atmNo).getAtmBalnce());
+               // widhraw(cardId,atmNo);
             }
         } else {
             StdIO.writeLine(ConsoleColors.RED_BOLD_BRIGHT+"Sorry .... no sufficient fund in your account"+ConsoleColors.RESET);

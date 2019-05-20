@@ -2,7 +2,7 @@ package com.tamer;
 
 import java.time.LocalDateTime;
 
-public class Trans {
+public class Trans implements java.io.Serializable{
     private String transNo;
     private String Customer_Id;
     private LocalDateTime transTime;
