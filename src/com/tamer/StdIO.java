@@ -9,8 +9,13 @@ public class StdIO {
 
     public static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-    public static String realLine() throws IOException {
-        String txt = reader.readLine();
+    public static String realLine()  {
+        String txt = null;
+        try {
+            txt = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return txt;
     }
 

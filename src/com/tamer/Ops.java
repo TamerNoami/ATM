@@ -1,8 +1,5 @@
 package com.tamer;
 
-import com.sun.xml.internal.ws.util.StringUtils;
-
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,8 +13,19 @@ public class Ops {
     Random random = new Random();
 
 
+    public  HashMap<Integer, AtmUnit> getAtmlist() {
+        return atmlist;
+    }
 
-    public Ops() throws IOException {
+    public HashMap<String, Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(HashMap<String, Customer> customers) {
+        this.customers = customers;
+    }
+
+    public Ops() {
 //        AtmUnit atmUnit1 = new AtmUnit(10001, "Port 73, Handen, Haninge", 100000, true);
 //        AtmUnit atmUnit2 = new AtmUnit(10002, "Haninge Centrum, Main Entrance", 100000, true);
 //        Customer Ahmed = new Customer("2233445566", "Ahmed Ali Ahmed", "1234", "123456789", true, 18123.23);
@@ -26,13 +34,13 @@ public class Ops {
 //        atmlist.put(atmUnit2.getAtmId(), atmUnit2);
 //        customers.put(Ahmed.getCustomer_Id(), Ahmed);
 //        customers.put(David.getCustomer_Id(), David);
-        atmlist = FileIO.readObject("ATMlist.ser");
-        customers = FileIO.readObject("Customerlist.ser");
-        transList = FileIO.readObject("Translist.ser");
-        AtmUsing();
+        atmlist = FileIO.readObject("C:\\Users\\User\\IdeaProjects\\ATM\\ATMlist.ser");
+        customers = FileIO.readObject("C:\\Users\\User\\IdeaProjects\\ATM\\Customerlist.ser");
+        transList = FileIO.readObject("C:\\Users\\User\\IdeaProjects\\ATM\\Translist.ser");
+       // AtmUsing();
     }
 
-    private void AtmUsing() throws IOException {
+    private void AtmUsing()  {
         StdIO.writeLine("");
         StdIO.writeLine("-- ATM List --");
         StdIO.writeLine("");
@@ -60,7 +68,7 @@ public class Ops {
 
 
 
-    private void login(int atmno) throws IOException {
+    private void login(int atmno) {
 
 
         int loginCount = 0;
@@ -90,7 +98,7 @@ public class Ops {
 
     }
 
-    private void optionScreen(String customerId, int atmNo) throws IOException {
+    private void optionScreen(String customerId, int atmNo)  {
         StdIO.writeLine("");
         StdIO.writeLine("Options");
         StdIO.writeLine("1) Withdraw");
@@ -116,7 +124,7 @@ public class Ops {
         }
     }
 
-    private void changePass(String customerId) throws IOException {
+    private void changePass(String customerId)  {
         StdIO.writeLine("Please enter your old password ");
         StdIO.write(">> ");
         String oldPass =StdIO.realLine();
@@ -131,7 +139,7 @@ public class Ops {
         }
     }
 
-    private String checkPass() throws IOException {
+    private String checkPass() {
         StdIO.writeLine("Enter your new password .. 4 numbers only");
         StdIO.write(">> ");
         String newPass1=StdIO.realLine();
@@ -171,7 +179,7 @@ public class Ops {
         StdIO.write("---------------------------------------------------------------------");
     }
 
-    private void Deposit(String cardId, int atmno) throws IOException {
+    private void Deposit(String cardId, int atmno) {
         StdIO.writeLine(" -- Deposit -- ");
         StdIO.writeLine("Please chose the amount you want to deposit :");
         int depAmount =ATMRules();
@@ -199,7 +207,7 @@ public class Ops {
         System.out.println(trans.toString());
     }
 
-    private void widhraw(String cardId, int atmNo) throws IOException {
+    private void widhraw(String cardId, int atmNo)  {
         int amount = 0;
         Customer c = customers.get(cardId);
         AtmUnit a = atmlist.get(atmNo);
@@ -238,7 +246,7 @@ public class Ops {
         AtmUsing();// System.exit(0);
     }
 
-    private int ATMRules() throws IOException {
+    private int ATMRules()  {
         int amount=0;
         StdIO.writeLine(ConsoleColors.GREEN_BOLD+"1) 100 \t\t 4)500");
         StdIO.writeLine("2) 200 \t\t 5)1000");
@@ -271,7 +279,7 @@ public class Ops {
         return amount;
     }
 
-    private boolean checkLogin(String cardId, String password) {
+    public boolean checkLogin(String cardId, String password) {
 
         if (customers.containsKey(cardId) && customers.get(cardId).getPassword().equals(password))
             return true;
